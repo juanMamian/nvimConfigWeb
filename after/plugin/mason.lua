@@ -18,6 +18,7 @@ end
 
 local ls = require("luasnip");
 require("luasnip.loaders.from_vscode").lazy_load();
+require("luasnip.loaders.from_lua").lazy_load({paths='./snippets'});
 
 vim.keymap.set("i", "<Tab>", function() ls.expand() end);
 vim.keymap.set("i", "<S-Tab>", function() ls.jump(1) end);
@@ -68,9 +69,13 @@ lsp.lua_ls.setup({
     }
 });
 lsp.quick_lint_js.setup({});
+lsp.bashls.setup({});
 lsp.svelte.setup({});
 lsp.tsserver.setup({});
+lsp.graphql.setup({});
 lsp.clangd.setup({});
+lsp.volar.setup({});
+lsp.cssls.setup({});
 lsp.arduino_language_server.setup({});
 local arduinoPath = "/home/juan/Arduino/projs/";
 local my_arduino_fqbn = {
@@ -103,5 +108,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "K", '<cmd>lua vim.lsp.buf.hover()<cr>', opts);
         vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set("n", "<leader>F", function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end)
+        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts);
     end
 });
