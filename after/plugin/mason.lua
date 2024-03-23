@@ -71,6 +71,7 @@ lsp.lua_ls.setup({
 lsp.quick_lint_js.setup({});
 lsp.bashls.setup({});
 lsp.svelte.setup({});
+lsp.html.setup({});
 lsp.tsserver.setup({});
 lsp.graphql.setup({});
 lsp.clangd.setup({});
